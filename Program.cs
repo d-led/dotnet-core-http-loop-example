@@ -6,7 +6,13 @@ namespace dotnet_core_http_loop_example
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int runs = 10;
+            if (args.Length>0)
+            int.TryParse(args[0], out runs);
+
+            for (int run =0; run<runs; run++) {
+                Console.WriteLine($"Hello World {run}!");
+            }
         }
     }
 }

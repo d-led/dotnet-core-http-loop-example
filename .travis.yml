@@ -1,0 +1,6 @@
+language: csharp
+dotnet: 2.0.0
+dist: trusty
+
+script:
+  - dotnet run -- 7
