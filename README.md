@@ -1,7 +1,8 @@
 dotnet core http loop
 =====================
 
-[![Build Status](https://travis-ci.org/d-led/dotnet-core-http-loop-example.svg?branch=master)](https://travis-ci.org/d-led/dotnet-core-http-loop-example)
+[![Build Status](https://travis-ci.org/d-led/dotnet-core-http-loop-example.svg?branch=master)](https://travis-ci.org/d-led/dotnet-core-http-loop-example) [![Build status](https://ci.appveyor.com/api/projects/status/8x0lt0b769alqvi0?svg=true)](https://ci.appveyor.com/project/d-led/dotnet-core-http-loop-example)
+
 
 history
 -------
