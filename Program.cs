@@ -17,7 +17,7 @@ namespace dotnet_core_http_loop_example
 
     class Program
     {
-        readonly string url = "http://localhost:1234";
+        readonly string url = "http://127.0.0.1:1234";
 
         //
         static void Main(string[] args)
