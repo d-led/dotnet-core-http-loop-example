@@ -19,6 +19,21 @@ namespace dotnet_core_http_loop_example
     {
         readonly string url = "http://localhost:1234";
 
+        //
+        static void Main(string[] args)
+        {
+            try {
+                var program = new Program();
+                program.Client(args);
+                program.Server();
+            } catch (Exception e) {
+                Console.WriteLine($"ERROR: {e}");
+                System.Environment.Exit(1);
+            }
+        }
+
+
+        //
         void Client(string[] args) {
             int runs = 10;
             if (args.Length>0)
@@ -26,7 +41,7 @@ namespace dotnet_core_http_loop_example
 
             FlurlHttp.Configure(c => {
                 c.DefaultTimeout = TimeSpan.FromSeconds(30);
-                });
+            });
 
             // create some requests and exit
             Task.Run(() =>
@@ -39,10 +54,12 @@ namespace dotnet_core_http_loop_example
                         .Result;
                     Console.WriteLine(response);
                 }
+
                 System.Environment.Exit(0);
-                });
+            });
         }
 
+        //
         void Server() {
             using (var host = new NancyHost(new Uri(url)))
             {
@@ -52,16 +69,5 @@ namespace dotnet_core_http_loop_example
             }
         }
 
-        static void Main(string[] args)
-        {
-            try {
-                var program = new Program();
-                program.Client(args);
-                program.Server();
-            } catch (Exception e) {
-                Console.WriteLine($"ERROR: {e}");
-                System.Environment.Exit(1);
-            }
-        }
     }
 }
