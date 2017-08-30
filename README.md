@@ -3,6 +3,9 @@ dotnet core http loop
 
 [![Build Status](https://travis-ci.org/d-led/dotnet-core-http-loop-example.svg?branch=master)](https://travis-ci.org/d-led/dotnet-core-http-loop-example) [![Build status](https://ci.appveyor.com/api/projects/status/8x0lt0b769alqvi0?svg=true)](https://ci.appveyor.com/project/d-led/dotnet-core-http-loop-example)
 
+- source: [Program.cs](Program.cs)
+- minimal [Travis CI](https://travis-ci.org/) config [.travis.yml](.travis.yml) (Linux)
+- minimal [Appveyor](https://www.appveyor.com/) config [appveyor.yml](appveyor.yml) (Windows)
 
 history
 -------
