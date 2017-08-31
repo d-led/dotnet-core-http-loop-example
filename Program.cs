@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Nancy.Hosting.Self;
 using Flurl;
 using Flurl.Http;
@@ -24,7 +23,9 @@ namespace dotnet_core_http_loop_example
         {
             try {
                 var program = new Program();
-                program.Server(() => program.Client(args));
+                using (var _=program.Server()) {
+                    program.Client(args);
+                }
             } catch (Exception e) {
                 Console.WriteLine($"ERROR: {e}");
                 System.Environment.Exit(1);
@@ -38,35 +39,22 @@ namespace dotnet_core_http_loop_example
             if (args.Length>0)
             int.TryParse(args[0], out runs);
 
-            FlurlHttp.Configure(c => {
-                c.DefaultTimeout = TimeSpan.FromSeconds(30);
-            });
-
-            // create some requests and exit
-            Task.Run(() =>
-            {
-                for (int run =0; run<runs; run++) {
-                    System.Threading.Thread.Sleep(1000);
-                    var response = url
-                        .AppendPathSegment($"{run}")
-                        .GetStringAsync()
-                        .Result;
-                    Console.WriteLine(response);
-                }
-
-                System.Environment.Exit(0);
-            });
+            for (int run =0; run<runs; run++) {
+                System.Threading.Thread.Sleep(1000);
+                var response = url
+                    .AppendPathSegment($"{run}")
+                    .GetStringAsync()
+                    .Result;
+                Console.WriteLine(response);
+            }
         }
 
         //
-        void Server(Action after_start) {
-            using (var host = new NancyHost(new Uri(url)))
-            {
-                host.Start();
-                after_start();
-                Console.WriteLine($"Running on {url}");
-                Console.ReadLine();
-            }
+        IDisposable Server() {
+            var host = new NancyHost(new Uri(url));
+            host.Start();
+            Console.WriteLine($"Running on {url}");
+            return host;
         }
 
     }
