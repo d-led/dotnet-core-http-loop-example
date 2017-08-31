@@ -14,6 +14,7 @@ history
 - `cd dotnet-core-http-loop-example`
 - some hello-world code
 - `dotnet run -- 7`
+- CI config
 - `dotnet add package Nancy.Hosting.Self --version 2.0.0-clinteastwood`
 - `dotnet add package Nancy --version 2.0.0-clinteastwood`
 - `dotnet add package Flurl --version 2.4.0`
