@@ -24,8 +24,7 @@ namespace dotnet_core_http_loop_example
         {
             try {
                 var program = new Program();
-                program.Client(args);
-                program.Server();
+                program.Server(() => program.Client(args));
             } catch (Exception e) {
                 Console.WriteLine($"ERROR: {e}");
                 System.Environment.Exit(1);
@@ -60,10 +59,11 @@ namespace dotnet_core_http_loop_example
         }
 
         //
-        void Server() {
+        void Server(Action after_start) {
             using (var host = new NancyHost(new Uri(url)))
             {
                 host.Start();
+                after_start();
                 Console.WriteLine($"Running on {url}");
                 Console.ReadLine();
             }
