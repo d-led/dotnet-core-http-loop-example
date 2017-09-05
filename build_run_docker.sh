@@ -6,6 +6,7 @@ if ! [ -x "$(command -v docker)" ]; then
 fi
 
 # just for travis-ci
+# https://docs.travis-ci.com/user/docker/
 if [ "TRAVIS" = "true" ]; then
   sudo apt-get update
   sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
