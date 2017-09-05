@@ -3,6 +3,10 @@ mono: none
 dotnet: 2.0.0
 dist: trusty
 osx_image: xcode8.3
+sudo: required
+
+services:
+  - docker
 
 os:
   - linux
@@ -10,3 +14,4 @@ os:
 
 script:
   - dotnet run -- 7
+  - ./build_run_docker.sh
