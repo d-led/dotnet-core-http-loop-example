@@ -22,6 +22,8 @@ history
 - some NancyFX & Flurl code
 - `dotnet run -- 7`
 - simplified
+- docker config
+- ./build_run_docker.sh
 
 &darr;
 
