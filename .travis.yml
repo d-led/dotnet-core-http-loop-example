@@ -5,9 +5,13 @@ dist: trusty
 osx_image: xcode8.3
 sudo: required
 
+services:
+  - docker
+
 os:
   - linux
   - osx
 
 script:
   - dotnet run -- 7
+  - ./build_run_docker.sh

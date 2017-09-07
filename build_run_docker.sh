@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 if ! [ -x "$(command -v docker)" ]; then
   echo 'No docker CLI found, skipping' >&2
   exit 0
