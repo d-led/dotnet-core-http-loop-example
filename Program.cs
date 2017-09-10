@@ -23,7 +23,7 @@ namespace dotnet_core_http_loop_example
         {
             try {
                 var program = new Program();
-                using (var _=program.Server()) {
+                using (program.Server()) {
                     program.Client(args);
                 }
             } catch (Exception e) {
